@@ -1,169 +1,396 @@
-Create a complete, modern, mobile-friendly AI creation platform called “Dinesh AI Studio”.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinesh AI Studio</title>
 
-BRAND:
-Name: Dinesh AI Studio
-Tagline: Create Images, Videos & Audio with AI
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#0b1020;
+  color:#fff;
+}
+header{
+  padding:18px;
+  background:#11182d;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo{font-size:25px;font-weight:bold}
+.tagline{color:#9ca8c7;margin-top:6px}
+nav{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:12px;
+  background:#151d35;
+}
+nav button{
+  white-space:nowrap;
+  border:0;
+  padding:10px 14px;
+  border-radius:10px;
+  background:#26304d;
+  color:#fff;
+}
+nav button:hover{background:#4f46e5}
+main{max-width:900px;margin:auto;padding:20px}
+.section{display:none}
+.section.active{display:block}
+.card{
+  background:#151d35;
+  padding:20px;
+  margin-bottom:18px;
+  border-radius:18px;
+  box-shadow:0 8px 30px #0005;
+}
+h1,h2{margin-top:0}
+textarea,select,input{
+  width:100%;
+  padding:14px;
+  margin:8px 0 14px;
+  border:1px solid #303b5e;
+  border-radius:12px;
+  background:#0d1428;
+  color:#fff;
+}
+textarea{min-height:130px;resize:vertical}
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.generate{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:12px;
+  background:#6d5dfc;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+.generate:hover{background:#5848e8}
+.output{
+  margin-top:15px;
+  padding:20px;
+  min-height:120px;
+  border:1px dashed #465273;
+  border-radius:14px;
+  text-align:center;
+  color:#aeb8d5;
+}
+.price{
+  text-align:center;
+  padding:20px;
+  border:1px solid #303b5e;
+  border-radius:15px;
+  margin:12px 0;
+}
+.price button{
+  padding:12px 20px;
+  border:0;
+  border-radius:10px;
+  background:#6d5dfc;
+  color:white;
+}
+.small{color:#9ca8c7;font-size:13px}
+footer{
+  text-align:center;
+  padding:30px;
+  color:#7f8baa;
+}
+@media(max-width:600px){
+  .row{grid-template-columns:1fr}
+  main{padding:12px}
+}
+</style>
+</head>
 
-MAIN FEATURES:
+<body>
 
-1. AI IMAGE GENERATOR
-- Large prompt box
-- Generate Image button
-- Image style options:
-  - Realistic
-  - Cinematic
-  - Anime
-  - 3D Cartoon
-  - Artistic
-  - Portrait
-- Aspect ratio options:
-  - 1:1
-  - 16:9
-  - 9:16
-  - 4:3
-- Show generated image in an output area
-- Download button
+<header>
+  <div class="logo">✨ Dinesh AI Studio</div>
+  <div class="tagline">Create Images, Videos & Audio with AI</div>
+</header>
 
-2. AI VIDEO GENERATOR
-- Large video prompt box
-- Generate Video button
-- Video duration options:
-  - 30 seconds
-  - 40 seconds
-  - 50 seconds
-  - 1 minute
-  - 15 minutes
-  - 30 minutes
-  - 60 minutes / 1 hour
-  - 1.5 hours
-- Video aspect ratio:
-  - 16:9
-  - 9:16
-  - 1:1
-- Video style:
-  - Realistic
-  - Cinematic
-  - 3D Cartoon
-  - Anime
-  - Documentary
-  - Fantasy
-- Output video preview
-- Download Video button
+<nav>
+  <button onclick="showSection('home')">Home</button>
+  <button onclick="showSection('image')">Image</button>
+  <button onclick="showSection('video')">Video</button>
+  <button onclick="showSection('audio')">Audio</button>
+  <button onclick="showSection('creations')">My Creations</button>
+  <button onclick="showSection('pricing')">Pricing</button>
+  <button onclick="showSection('settings')">Settings</button>
+</nav>
 
-3. AI AUDIO GENERATOR
-- Text-to-speech prompt/text box
-- Voice selection
-- Male/Female voice options
-- Different language options
-- Generate Audio button
-- Audio player
-- Download Audio button
+<main>
 
-4. USER INTERFACE
-Create a beautiful premium dashboard:
-- Dinesh AI Studio logo/name at top
-- Home
-- Image Generator
-- Video Generator
-- Audio Generator
-- My Creations
-- Pricing
-- Settings
+<section id="home" class="section active">
+  <div class="card">
+    <h1>Welcome to Dinesh AI Studio 🚀</h1>
+    <p>Create amazing images, videos and audio with AI.</p>
+    <p class="small">15-day free trial available.</p>
+  </div>
 
-Use a modern dark AI-style interface with smooth animations, rounded cards, gradients and responsive design.
+  <div class="card">
+    <h2>What can you create?</h2>
+    <p>🖼️ AI Images</p>
+    <p>🎬 AI Videos</p>
+    <p>🎵 AI Audio</p>
+  </div>
+</section>
 
-5. FREE TRIAL
-For the first 15 days, make the platform available as a free trial.
+<section id="image" class="section">
+  <div class="card">
+    <h2>🖼️ AI Image Generator</h2>
 
-Show:
-“15-Day Free Trial”
+    <label>Describe your image</label>
+    <textarea id="imagePrompt"
+      placeholder="Example: A beautiful futuristic city at sunset..."></textarea>
 
-After the 15-day trial period, introduce paid plans.
+    <div class="row">
+      <div>
+        <label>Style</label>
+        <select id="imageStyle">
+          <option>Realistic</option>
+          <option>Cinematic</option>
+          <option>Anime</option>
+          <option>3D Cartoon</option>
+          <option>Artistic</option>
+          <option>Portrait</option>
+        </select>
+      </div>
 
-6. PRICING SYSTEM
-Create a pricing page with:
-- Free Trial
-- Basic
-- Pro
-- Premium
+      <div>
+        <label>Aspect Ratio</label>
+        <select id="imageRatio">
+          <option>1:1</option>
+          <option>16:9</option>
+          <option>9:16</option>
+          <option>4:3</option>
+        </select>
+      </div>
+    </div>
 
-Do not hard-code real payment credentials.
-Prepare the UI so a payment provider can be connected later.
+    <button class="generate" onclick="generateImage()">
+      Generate Image
+    </button>
 
-7. AI BACKEND READY
-The frontend must be prepared to connect to real AI APIs.
+    <div id="imageOutput" class="output">
+      Your generated image will appear here.
+    </div>
+  </div>
+</section>
 
-IMPORTANT:
-- Never expose API keys in frontend HTML/JavaScript.
-- Use secure backend API endpoints for image, video and audio generation.
-- Create clean functions such as:
-  /api/generate-image
-  /api/generate-video
-  /api/generate-audio
-- The frontend should send the user's prompt and selected settings to the backend.
-- Show loading/progress status while generation is running.
-- Show success and error messages.
+<section id="video" class="section">
+  <div class="card">
+    <h2>🎬 AI Video Generator</h2>
 
-8. VIDEO GENERATION
-The interface must support these duration values exactly:
-30 seconds
-40 seconds
-50 seconds
-1 minute
-15 minutes
-30 minutes
-60 minutes
-1.5 hours
+    <label>Describe your video</label>
+    <textarea id="videoPrompt"
+      placeholder="Example: A cinematic journey through the mountains..."></textarea>
 
-For very long videos, design the system so the backend can process the job asynchronously and return a job ID/status instead of keeping the browser request open.
+    <div class="row">
+      <div>
+        <label>Video Duration</label>
+        <select id="videoDuration">
+          <option>30 seconds</option>
+          <option>40 seconds</option>
+          <option>50 seconds</option>
+          <option>1 minute</option>
+          <option>15 minutes</option>
+          <option>30 minutes</option>
+          <option>60 minutes / 1 hour</option>
+          <option>1.5 hours</option>
+        </select>
+      </div>
 
-9. MY CREATIONS
-Create a gallery where users can see:
-- Generated images
-- Generated videos
-- Generated audio
+      <div>
+        <label>Aspect Ratio</label>
+        <select>
+          <option>16:9</option>
+          <option>9:16</option>
+          <option>1:1</option>
+        </select>
+      </div>
+    </div>
 
-Each creation should have:
-- Preview
-- Date
-- Type
-- Download button
-- Delete button
+    <label>Video Style</label>
+    <select>
+      <option>Realistic</option>
+      <option>Cinematic</option>
+      <option>3D Cartoon</option>
+      <option>Anime</option>
+      <option>Documentary</option>
+      <option>Fantasy</option>
+    </select>
 
-10. MOBILE DESIGN
-The entire platform must work properly on Android phones, tablets and desktop computers.
+    <button class="generate" onclick="generateVideo()">
+      Generate Video
+    </button>
 
-11. SECURITY
-- Never put secret API keys in index.html.
-- Never expose payment secret keys.
-- Validate user input on the backend.
-- Add authentication-ready structure.
-- Add rate limiting and usage limits on the backend.
+    <div id="videoOutput" class="output">
+      Your generated video will appear here.
+    </div>
+  </div>
+</section>
 
-12. CODE STRUCTURE
-Create clean, production-ready code.
+<section id="audio" class="section">
+  <div class="card">
+    <h2>🎵 AI Audio Generator</h2>
 
-Frontend:
-- index.html
-- CSS
-- JavaScript
+    <label>Enter text or audio description</label>
+    <textarea id="audioPrompt"
+      placeholder="Example: Create a calm Hindi voice narration..."></textarea>
 
-Backend-ready API structure:
-- /api/generate-image
-- /api/generate-video
-- /api/generate-audio
-- /api/status
-- /api/creations
+    <div class="row">
+      <div>
+        <label>Voice</label>
+        <select>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
 
-Make the frontend functional even before the real AI APIs are connected by showing a clear “AI backend not connected yet” message instead of pretending that a real generation occurred.
+      <div>
+        <label>Language</label>
+        <select>
+          <option>Hindi</option>
+          <option>English</option>
+          <option>Hinglish</option>
+        </select>
+      </div>
+    </div>
 
-The final result should look like a professional AI platform named:
+    <button class="generate" onclick="generateAudio()">
+      Generate Audio
+    </button>
 
-“DINESH AI STUDIO”
+    <div id="audioOutput" class="output">
+      Your generated audio will appear here.
+    </div>
+  </div>
+</section>
 
-with the main buttons:
-“Generate Image”
-“Generate Video”
-“Generate Audio”
+<section id="creations" class="section">
+  <div class="card">
+    <h2>🗂️ My Creations</h2>
+    <div class="output">
+      Your creations will appear here after AI generation is connected.
+    </div>
+  </div>
+</section>
 
-and the video duration selector must include 30 seconds, 40 seconds, 50 seconds, 1 minute, 15 minutes, 30 minutes, 60 minutes and 1.5 hours.
+<section id="pricing" class="section">
+  <div class="card">
+    <h2>💎 Pricing</h2>
+
+    <div class="price">
+      <h3>Free Trial</h3>
+      <p>15 Days Free</p>
+      <button onclick="choosePlan('Free Trial')">Start Trial</button>
+    </div>
+
+    <div class="price">
+      <h3>Basic</h3>
+      <p>AI creation tools</p>
+      <button onclick="choosePlan('Basic')">Choose Plan</button>
+    </div>
+
+    <div class="price">
+      <h3>Pro</h3>
+      <p>Advanced AI creation</p>
+      <button onclick="choosePlan('Pro')">Choose Plan</button>
+    </div>
+
+    <div class="price">
+      <h3>Premium</h3>
+      <p>Long video & advanced creation</p>
+      <button onclick="choosePlan('Premium')">Choose Plan</button>
+    </div>
+  </div>
+</section>
+
+<section id="settings" class="section">
+  <div class="card">
+    <h2>⚙️ Settings</h2>
+    <p>Language: English / Hindi</p>
+    <p>Theme: Dark</p>
+    <p class="small">More settings will be added later.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2026 Dinesh AI Studio
+</footer>
+
+<script>
+function showSection(id){
+  document.querySelectorAll('.section').forEach(function(section){
+    section.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function generateImage(){
+  const prompt=document.getElementById('imagePrompt').value.trim();
+  const output=document.getElementById('imageOutput');
+
+  if(!prompt){
+    output.innerHTML="⚠️ Please enter an image prompt.";
+    return;
+  }
+
+  output.innerHTML=
+    "⏳ Demo mode<br><br>" +
+    "Image request received.<br>" +
+    "AI backend is not connected yet.";
+}
+
+function generateVideo(){
+  const prompt=document.getElementById('videoPrompt').value.trim();
+  const duration=document.getElementById('videoDuration').value;
+  const output=document.getElementById('videoOutput');
+
+  if(!prompt){
+    output.innerHTML="⚠️ Please enter a video prompt.";
+    return;
+  }
+
+  output.innerHTML=
+    "⏳ Demo mode<br><br>" +
+    "Video duration: "+duration+"<br>" +
+    "AI video backend is not connected yet.";
+}
+
+function generateAudio(){
+  const prompt=document.getElementById('audioPrompt').value.trim();
+  const output=document.getElementById('audioOutput');
+
+  if(!prompt){
+    output.innerHTML="⚠️ Please enter an audio prompt.";
+    return;
+  }
+
+  output.innerHTML=
+    "⏳ Demo mode<br><br>" +
+    "Audio request received.<br>" +
+    "AI audio backend is not connected yet.";
+}
+
+function choosePlan(plan){
+  alert(plan+" selected. Payment system will be connected later.");
+}
+</script>
+
+</body>
+</html>
