@@ -3,10 +3,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { prompt, style } = req.body || {};
+  const { prompt, style, size } = req.body || {};
 
   if (!prompt) {
     return res.status(400).json({ error: "Prompt is required" });
+  }
+
+  if (!process.env.OPENAI_API_KEY) {
+    return res.status(500).json({
+      error: "OPENAI_API_KEY is not configured"
+    });
   }
 
   const fullPrompt = style
@@ -23,9 +29,9 @@ export default async function handler(req, res) {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "gpt-image-1",
+          model: "gpt-image-2",
           prompt: fullPrompt,
-          size: "1024x1024"
+          size: size || "1024x1024"
         })
       }
     );
@@ -34,7 +40,7 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       return res.status(response.status).json({
-        error: data.error?.message || "OpenAI request failed"
+        error: data.error?.message || "OpenAI image generation failed"
       });
     }
 
