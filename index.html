@@ -7,22 +7,33 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:Arial,sans-serif;
   background:#0b1020;
   color:#fff;
 }
+
 header{
-  padding:18px;
+  padding:20px;
   background:#11182d;
   text-align:center;
   position:sticky;
   top:0;
   z-index:10;
 }
-.logo{font-size:25px;font-weight:bold}
-.tagline{color:#9ca8c7;margin-top:6px}
+
+.logo{
+  font-size:26px;
+  font-weight:bold;
+}
+
+.tagline{
+  color:#9ca8c7;
+  margin-top:7px;
+}
+
 nav{
   display:flex;
   gap:8px;
@@ -30,18 +41,35 @@ nav{
   padding:12px;
   background:#151d35;
 }
+
 nav button{
   white-space:nowrap;
   border:0;
-  padding:10px 14px;
+  padding:11px 15px;
   border-radius:10px;
   background:#26304d;
   color:#fff;
+  cursor:pointer;
 }
-nav button:hover{background:#4f46e5}
-main{max-width:900px;margin:auto;padding:20px}
-.section{display:none}
-.section.active{display:block}
+
+nav button:hover{
+  background:#4f46e5;
+}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
 .card{
   background:#151d35;
   padding:20px;
@@ -49,8 +77,14 @@ main{max-width:900px;margin:auto;padding:20px}
   border-radius:18px;
   box-shadow:0 8px 30px #0005;
 }
-h1,h2{margin-top:0}
-textarea,select,input{
+
+h1,h2,h3{
+  margin-top:0;
+}
+
+textarea,
+select,
+input{
   width:100%;
   padding:14px;
   margin:8px 0 14px;
@@ -59,12 +93,18 @@ textarea,select,input{
   background:#0d1428;
   color:#fff;
 }
-textarea{min-height:130px;resize:vertical}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
 .row{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
+
 .generate{
   width:100%;
   padding:15px;
@@ -74,8 +114,13 @@ textarea{min-height:130px;resize:vertical}
   color:white;
   font-size:16px;
   font-weight:bold;
+  cursor:pointer;
 }
-.generate:hover{background:#5848e8}
+
+.generate:hover{
+  background:#5848e8;
+}
+
 .output{
   margin-top:15px;
   padding:20px;
@@ -85,6 +130,14 @@ textarea{min-height:130px;resize:vertical}
   text-align:center;
   color:#aeb8d5;
 }
+
+.feature{
+  padding:15px;
+  margin:9px 0;
+  background:#0d1428;
+  border-radius:12px;
+}
+
 .price{
   text-align:center;
   padding:20px;
@@ -92,22 +145,48 @@ textarea{min-height:130px;resize:vertical}
   border-radius:15px;
   margin:12px 0;
 }
+
 .price button{
   padding:12px 20px;
   border:0;
   border-radius:10px;
   background:#6d5dfc;
-  color:white;
+  color:#fff;
 }
-.small{color:#9ca8c7;font-size:13px}
+
+.small{
+  color:#9ca8c7;
+  font-size:13px;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:20px;
+  background:#26304d;
+  color:#aeb8d5;
+  font-size:13px;
+  margin-bottom:12px;
+}
+
 footer{
   text-align:center;
   padding:30px;
   color:#7f8baa;
 }
+
 @media(max-width:600px){
-  .row{grid-template-columns:1fr}
-  main{padding:12px}
+  .row{
+    grid-template-columns:1fr;
+  }
+
+  main{
+    padding:12px;
+  }
+
+  .logo{
+    font-size:23px;
+  }
 }
 </style>
 </head>
@@ -116,12 +195,13 @@ footer{
 
 <header>
   <div class="logo">✨ Dinesh AI Studio</div>
-  <div class="tagline">Create Images, Videos & Audio with AI</div>
+  <div class="tagline">Create Your Ideas with AI</div>
 </header>
 
 <nav>
   <button onclick="showSection('home')">Home</button>
   <button onclick="showSection('image')">Image</button>
+  <button onclick="showSection('image2image')">Image to Image</button>
   <button onclick="showSection('video')">Video</button>
   <button onclick="showSection('audio')">Audio</button>
   <button onclick="showSection('creations')">My Creations</button>
@@ -131,44 +211,73 @@ footer{
 
 <main>
 
+<!-- HOME -->
 <section id="home" class="section active">
+
   <div class="card">
+    <span class="badge">🎉 Free Launch Period</span>
+
     <h1>Welcome to Dinesh AI Studio 🚀</h1>
-    <p>Create amazing images, videos and audio with AI.</p>
-    <p class="small">15-day free trial available.</p>
+
+    <p>
+      Turn your ideas into amazing AI creations.
+    </p>
+
+    <p>
+      Create images, transform images, and explore
+      AI video and audio generation.
+    </p>
+
+    <button class="generate" onclick="showSection('image')">
+      Start Creating
+    </button>
   </div>
 
   <div class="card">
     <h2>What can you create?</h2>
-    <p>🖼️ AI Images</p>
-    <p>🎬 AI Videos</p>
-    <p>🎵 AI Audio</p>
+
+    <div class="feature">🖼️ AI Images</div>
+    <div class="feature">🔄 Image to Image</div>
+    <div class="feature">🎬 AI Videos</div>
+    <div class="feature">🎵 AI Audio & Music</div>
   </div>
+
 </section>
 
-<section id="image" class="section">
-  <div class="card">
-    <h2>🖼️ AI Image Generator</h2>
 
-    <label>Describe your image</label>
-    <textarea id="imagePrompt"
-      placeholder="Example: A beautiful futuristic city at sunset..."></textarea>
+<!-- IMAGE GENERATOR -->
+<section id="image" class="section">
+
+  <div class="card">
+
+    <span class="badge">🖼️ AI Image Generator</span>
+
+    <h2>Create an Image</h2>
+
+    <label>Describe what you want to create</label>
+
+    <textarea
+      id="imagePrompt"
+      placeholder="Example: A cinematic realistic portrait of a young man standing in Delhi at golden hour, 4K photography..."
+    ></textarea>
+
+    <label>Style</label>
+
+    <select id="imageStyle">
+      <option>Realistic</option>
+      <option>Cinematic</option>
+      <option>Portrait</option>
+      <option>Anime</option>
+      <option>3D Cartoon</option>
+      <option>Artistic</option>
+      <option>Fantasy</option>
+    </select>
 
     <div class="row">
-      <div>
-        <label>Style</label>
-        <select id="imageStyle">
-          <option>Realistic</option>
-          <option>Cinematic</option>
-          <option>Anime</option>
-          <option>3D Cartoon</option>
-          <option>Artistic</option>
-          <option>Portrait</option>
-        </select>
-      </div>
 
       <div>
         <label>Aspect Ratio</label>
+
         <select id="imageRatio">
           <option>1:1</option>
           <option>16:9</option>
@@ -176,220 +285,467 @@ footer{
           <option>4:3</option>
         </select>
       </div>
+
+      <div>
+        <label>Quality</label>
+
+        <select id="imageQuality">
+          <option>Standard</option>
+          <option>HD</option>
+          <option>Ultra HD</option>
+        </select>
+      </div>
+
     </div>
 
+    <label>Negative Prompt (optional)</label>
+
+    <textarea
+      id="negativePrompt"
+      placeholder="Example: blurry, low quality, distorted face..."
+    ></textarea>
+
     <button class="generate" onclick="generateImage()">
-      Generate Image
+      ✨ Generate Image
     </button>
 
     <div id="imageOutput" class="output">
       Your generated image will appear here.
     </div>
+
   </div>
+
 </section>
 
-<section id="video" class="section">
+
+<!-- IMAGE TO IMAGE -->
+<section id="image2image" class="section">
+
   <div class="card">
-    <h2>🎬 AI Video Generator</h2>
 
-    <label>Describe your video</label>
-    <textarea id="videoPrompt"
-      placeholder="Example: A cinematic journey through the mountains..."></textarea>
+    <span class="badge">🔄 Image to Image</span>
 
-    <div class="row">
-      <div>
-        <label>Video Duration</label>
-        <select id="videoDuration">
-          <option>30 seconds</option>
-          <option>40 seconds</option>
-          <option>50 seconds</option>
-          <option>1 minute</option>
-          <option>15 minutes</option>
-          <option>30 minutes</option>
-          <option>60 minutes / 1 hour</option>
-          <option>1.5 hours</option>
-        </select>
-      </div>
+    <h2>Transform an Image</h2>
 
-      <div>
-        <label>Aspect Ratio</label>
-        <select>
-          <option>16:9</option>
-          <option>9:16</option>
-          <option>1:1</option>
-        </select>
-      </div>
+    <label>Upload Reference Image</label>
+
+    <input type="file" id="referenceImage" accept="image/*">
+
+    <label>Tell AI what to change</label>
+
+    <textarea
+      id="image2imagePrompt"
+      placeholder="Example: Change the clothes to a black suit while keeping the face and identity consistent..."
+    ></textarea>
+
+    <button class="generate" onclick="generateImage2Image()">
+      ✨ Transform Image
+    </button>
+
+    <div id="image2imageOutput" class="output">
+      Your transformed image will appear here.
     </div>
 
-    <label>Video Style</label>
-    <select>
-      <option>Realistic</option>
-      <option>Cinematic</option>
-      <option>3D Cartoon</option>
-      <option>Anime</option>
-      <option>Documentary</option>
-      <option>Fantasy</option>
+  </div>
+
+  <div class="card">
+
+    <h3>👤 Character Consistency</h3>
+
+    <p class="small">
+      Upload a reference image and use prompts to keep
+      the same character appearance across future creations.
+    </p>
+
+    <p class="small">
+      Character consistency AI backend will be connected later.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- VIDEO -->
+<section id="video" class="section">
+
+  <div class="card">
+
+    <span class="badge">🎬 AI Video Generator</span>
+
+    <h2>Create a Video</h2>
+
+    <label>Video Prompt</label>
+
+    <textarea
+      id="videoPrompt"
+      placeholder="Example: A cinematic drone shot flying over beautiful mountains at sunrise..."
+    ></textarea>
+
+    <label>Video Duration</label>
+
+    <select id="videoDuration">
+      <option>30 seconds</option>
+      <option>40 seconds</option>
+      <option>50 seconds</option>
+      <option>1 minute</option>
+      <option>15 minutes</option>
+      <option>20 minutes</option>
+      <option>1 hour</option>
+      <option>1.5 hours</option>
+      <option>2 hours</option>
+    </select>
+
+    <label>Aspect Ratio</label>
+
+    <select id="videoRatio">
+      <option>16:9</option>
+      <option>9:16</option>
+      <option>1:1</option>
     </select>
 
     <button class="generate" onclick="generateVideo()">
-      Generate Video
+      🎬 Generate Video
     </button>
 
     <div id="videoOutput" class="output">
-      Your generated video will appear here.
+      Video generation backend is coming soon.
     </div>
+
   </div>
+
 </section>
 
-<section id="audio" class="section">
-  <div class="card">
-    <h2>🎵 AI Audio Generator</h2>
 
-    <label>Enter text or audio description</label>
-    <textarea id="audioPrompt"
-      placeholder="Example: Create a calm Hindi voice narration..."></textarea>
+<!-- AUDIO -->
+<section id="audio" class="section">
+
+  <div class="card">
+
+    <span class="badge">🎵 AI Audio</span>
+
+    <h2>Create Music or Audio</h2>
+
+    <label>Audio Prompt</label>
+
+    <textarea
+      id="audioPrompt"
+      placeholder="Example: Emotional cinematic background music for a motivational story..."
+    ></textarea>
 
     <div class="row">
+
       <div>
-        <label>Voice</label>
-        <select>
-          <option>Male</option>
-          <option>Female</option>
+        <label>Music Style</label>
+
+        <select id="audioStyle">
+          <option>Cinematic</option>
+          <option>Lo-Fi</option>
+          <option>Pop</option>
+          <option>Classical</option>
+          <option>Ambient</option>
+          <option>Indian</option>
         </select>
       </div>
 
       <div>
-        <label>Language</label>
-        <select>
-          <option>Hindi</option>
-          <option>English</option>
-          <option>Hinglish</option>
+        <label>Mood</label>
+
+        <select id="audioMood">
+          <option>Happy</option>
+          <option>Emotional</option>
+          <option>Relaxing</option>
+          <option>Energetic</option>
+          <option>Romantic</option>
+          <option>Motivational</option>
         </select>
       </div>
+
     </div>
 
     <button class="generate" onclick="generateAudio()">
-      Generate Audio
+      🎵 Generate Audio
     </button>
 
     <div id="audioOutput" class="output">
-      Your generated audio will appear here.
+      Audio generation backend is coming soon.
     </div>
+
   </div>
+
 </section>
 
+
+<!-- MY CREATIONS -->
 <section id="creations" class="section">
+
   <div class="card">
+
     <h2>🗂️ My Creations</h2>
+
+    <p>
+      Your generated images, videos and audio will appear here.
+    </p>
+
     <div class="output">
-      Your creations will appear here after AI generation is connected.
+      No creations yet.
     </div>
+
   </div>
+
 </section>
 
+
+<!-- PRICING -->
 <section id="pricing" class="section">
+
   <div class="card">
-    <h2>💎 Pricing</h2>
+
+    <span class="badge">🎉 Launch Offer</span>
+
+    <h2>Free Launch Period</h2>
+
+    <p>
+      Dinesh AI Studio is currently free during the
+      launch period.
+    </p>
 
     <div class="price">
-      <h3>Free Trial</h3>
-      <p>15 Days Free</p>
-      <button onclick="choosePlan('Free Trial')">Start Trial</button>
+
+      <h3>Free</h3>
+
+      <p>Start creating and explore the platform.</p>
+
+      <button onclick="choosePlan('Free')">
+        Start Free
+      </button>
+
     </div>
 
     <div class="price">
-      <h3>Basic</h3>
-      <p>AI creation tools</p>
-      <button onclick="choosePlan('Basic')">Choose Plan</button>
+
+      <h3>Future Payment</h3>
+
+      <p>
+        Payment and credit systems will be added later.
+      </p>
+
+      <p class="small">
+        Future video pricing can be connected to
+        duration-based credits.
+      </p>
+
     </div>
 
-    <div class="price">
-      <h3>Pro</h3>
-      <p>Advanced AI creation</p>
-      <button onclick="choosePlan('Pro')">Choose Plan</button>
-    </div>
-
-    <div class="price">
-      <h3>Premium</h3>
-      <p>Long video & advanced creation</p>
-      <button onclick="choosePlan('Premium')">Choose Plan</button>
-    </div>
   </div>
+
 </section>
 
+
+<!-- SETTINGS -->
 <section id="settings" class="section">
+
   <div class="card">
+
     <h2>⚙️ Settings</h2>
-    <p>Language: English / Hindi</p>
-    <p>Theme: Dark</p>
-    <p class="small">More settings will be added later.</p>
+
+    <label>Language</label>
+
+    <select>
+      <option>English</option>
+      <option>Hindi</option>
+    </select>
+
+    <label>Theme</label>
+
+    <select>
+      <option>Dark</option>
+    </select>
+
+    <p class="small">
+      More account and AI settings will be added later.
+    </p>
+
   </div>
+
+  <div class="card">
+
+    <h3>About Dinesh AI Studio</h3>
+
+    <p>
+      Dinesh AI Studio is an AI creative platform
+      designed to turn ideas into images, videos and audio.
+    </p>
+
+  </div>
+
 </section>
 
 </main>
+
 
 <footer>
   © 2026 Dinesh AI Studio
 </footer>
 
+
 <script>
+
 function showSection(id){
-  document.querySelectorAll('.section').forEach(function(section){
-    section.classList.remove('active');
-  });
-  document.getElementById(id).classList.add('active');
+
+  document
+    .querySelectorAll(".section")
+    .forEach(function(section){
+
+      section.classList.remove("active");
+
+    });
+
+  document
+    .getElementById(id)
+    .classList.add("active");
+
   window.scrollTo(0,0);
 }
 
+
 function generateImage(){
-  const prompt=document.getElementById('imagePrompt').value.trim();
-  const output=document.getElementById('imageOutput');
+
+  const prompt =
+    document.getElementById("imagePrompt").value.trim();
+
+  const style =
+    document.getElementById("imageStyle").value;
+
+  const ratio =
+    document.getElementById("imageRatio").value;
+
+  const quality =
+    document.getElementById("imageQuality").value;
+
+  const output =
+    document.getElementById("imageOutput");
+
 
   if(!prompt){
-    output.innerHTML="⚠️ Please enter an image prompt.";
+
+    output.innerHTML =
+      "⚠️ Please enter an image prompt.";
+
     return;
   }
 
-  output.innerHTML=
-    "⏳ Demo mode<br><br>" +
-    "Image request received.<br>" +
-    "AI backend is not connected yet.";
+
+  output.innerHTML =
+    "⏳ Preparing your image request...<br><br>" +
+    "Style: " + style + "<br>" +
+    "Ratio: " + ratio + "<br>" +
+    "Quality: " + quality + "<br><br>" +
+    "🔌 Real AI image backend will be connected next.";
+
 }
+
+
+function generateImage2Image(){
+
+  const file =
+    document.getElementById("referenceImage").files[0];
+
+  const prompt =
+    document.getElementById("image2imagePrompt").value.trim();
+
+  const output =
+    document.getElementById("image2imageOutput");
+
+
+  if(!file){
+
+    output.innerHTML =
+      "⚠️ Please upload a reference image.";
+
+    return;
+  }
+
+
+  if(!prompt){
+
+    output.innerHTML =
+      "⚠️ Please describe the changes you want.";
+
+    return;
+  }
+
+
+  output.innerHTML =
+    "⏳ Image-to-image request received.<br><br>" +
+    "🔌 Real AI image backend will be connected next.";
+
+}
+
 
 function generateVideo(){
-  const prompt=document.getElementById('videoPrompt').value.trim();
-  const duration=document.getElementById('videoDuration').value;
-  const output=document.getElementById('videoOutput');
+
+  const prompt =
+    document.getElementById("videoPrompt").value.trim();
+
+  const duration =
+    document.getElementById("videoDuration").value;
+
+  const output =
+    document.getElementById("videoOutput");
+
 
   if(!prompt){
-    output.innerHTML="⚠️ Please enter a video prompt.";
+
+    output.innerHTML =
+      "⚠️ Please enter a video prompt.";
+
     return;
   }
 
-  output.innerHTML=
-    "⏳ Demo mode<br><br>" +
-    "Video duration: "+duration+"<br>" +
-    "AI video backend is not connected yet.";
+
+  output.innerHTML =
+    "⏳ Video request received.<br><br>" +
+    "Duration: " + duration + "<br><br>" +
+    "🎬 Video AI backend is coming soon.";
+
 }
+
 
 function generateAudio(){
-  const prompt=document.getElementById('audioPrompt').value.trim();
-  const output=document.getElementById('audioOutput');
+
+  const prompt =
+    document.getElementById("audioPrompt").value.trim();
+
+  const output =
+    document.getElementById("audioOutput");
+
 
   if(!prompt){
-    output.innerHTML="⚠️ Please enter an audio prompt.";
+
+    output.innerHTML =
+      "⚠️ Please enter an audio prompt.";
+
     return;
   }
 
-  output.innerHTML=
-    "⏳ Demo mode<br><br>" +
-    "Audio request received.<br>" +
-    "AI audio backend is not connected yet.";
+
+  output.innerHTML =
+    "⏳ Audio request received.<br><br>" +
+    "🎵 Audio AI backend is coming soon.";
+
 }
 
+
 function choosePlan(plan){
-  alert(plan+" selected. Payment system will be connected later.");
+
+  alert(
+    plan +
+    " selected. Payment system will be added later."
+  );
+
 }
+
 </script>
 
 </body>
